@@ -1,1 +1,3 @@
-module NetworProtocol1_0
+module github.com/HTTPs-omma/HSProtocol
+
+go 1.23.0

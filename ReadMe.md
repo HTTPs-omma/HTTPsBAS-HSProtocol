@@ -90,7 +90,7 @@ validate : b8a2
 
 ### Example 3. toByte (직렬화)
 
-<hr>
+---
 
 코드 :
 ```go
