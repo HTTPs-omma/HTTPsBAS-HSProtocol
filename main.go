@@ -1,8 +1,8 @@
 package main
 
 import (
-	"NetworProtocol1_0/HSProtocol"
 	"fmt"
+	"github.com/HTTPs-omma/HSProtocol/HSProtocol"
 	"log"
 )
 
