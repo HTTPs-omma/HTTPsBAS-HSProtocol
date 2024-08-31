@@ -88,6 +88,8 @@ func (hs *HSProtocolManager) GetCheckSum(data []byte) []byte {
 }
 
 func (hsmgr *HSProtocolManager) ToBytes(hs *HS) ([]byte, error) {
+	hs.TotalLength = uint16(hsmgr.headerByteSize + len(hs.Data))
+
 	buf := make([]byte, hs.TotalLength)
 
 	var commandHeader uint16
@@ -100,7 +102,6 @@ func (hsmgr *HSProtocolManager) ToBytes(hs *HS) ([]byte, error) {
 	binary.BigEndian.PutUint16(buf[6:8], hs.TotalLength)    // TotalLength
 	copy(buf[8:24], hs.UUID[:])                             // UUID
 	copy(buf[24:], hs.Data)                                 // Data
-
 	copy(buf[4:6], hsmgr.GetCheckSum(buf))
 
 	return buf, nil
