@@ -102,7 +102,7 @@ func (hsmgr *HSProtocolManager) ToBytes(hs *HS) ([]byte, error) {
 	binary.BigEndian.PutUint16(buf[6:8], hs.TotalLength)    // TotalLength
 	copy(buf[8:24], hs.UUID[:])                             // UUID
 	copy(buf[24:], hs.Data)                                 // Data
-	copy(buf[4:6], hsmgr.GetCheckSum(buf))
+	copy(buf[4:6], hsmgr.GetCheckSum(buf))                  // Checksum 계산
 
 	return buf, nil
 }
