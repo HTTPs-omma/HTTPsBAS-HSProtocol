@@ -101,6 +101,15 @@ hsManager.PrintByte(data2)
 ```
 
 ## Reference
+### Health Status (HS) field
+| HS field | status   | 설명                |
+|----------|----------|-------------------|
+| **0b00**   | waitting | Agent가 대기중인 상태    |
+| **0b01**     | running  | Agent 가 동작중인 상태   
+| **0b10**     | stopping | Agent 가 잠시 중단된 상태 |
+| **0b11**     | deleted  | Agent 가 삭제된 상태    | 
+
+
 
 ### Command: 0 (0b0000000000)
 - **제목:** Ack
@@ -117,8 +126,8 @@ hsManager.PrintByte(data2)
  | 0b0011 | HTTP    | -------- |
  | 0b0100 | HTTPS   | -------- |
 
-### Command: 1 (0b0000000010)
-- **제목:** updateProtocol
+### Command: 2 (0b0000000010)
+- **제목:** updateStatus
 - **설명:** Agent가 자신의 통신 방법을 전달합니다.
     - 0b00: stopping
     - 0b01: waiting (새로 생성)
@@ -130,8 +139,8 @@ hsManager.PrintByte(data2)
 - **설명:** Agent가 컴퓨터의 정보를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
 ### Command: 4 (0b0000000100)
-- **제목:** postSystemInfo 데이터
-- **설명:** Agent가 컴퓨터의 정보를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
+- **제목:** 예약
+- **설명:** 예약
 
 ### Command: 5 (0b0000000101)
 - **제목:** postApplicationInfo 데이터
@@ -142,7 +151,7 @@ hsManager.PrintByte(data2)
 - **설명:** Agent가 Server 측에 공격 시나리오 (YAML 파일)를 요청합니다. 이때 데이터는 Data 필드에 YAML 형태로 직렬화하여 전송됩니다.
 
 ### Command: 7 (0b0000000111)
-- **제목:** postProcedure
+- **제목:** postLogOfProcedure
 - **설명:** Agent가 Server 측에 공격 시나리오 로그를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
 ---
