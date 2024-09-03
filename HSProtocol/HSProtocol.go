@@ -6,9 +6,10 @@ import (
 )
 
 type HS struct {
-	Version        uint8
-	HealthStatus   uint8
-	Command        uint16
+	ProtocolID   uint8
+	HealthStatus uint8
+	Command      uint16
+	//ProtocolID     uint16
 	Identification uint16
 	Checksum       uint16
 	TotalLength    uint16
@@ -18,13 +19,13 @@ type HS struct {
 
 type HSProtocolManager struct {
 	headerByteSize int
-	version        uint8
+	ProtocolID     uint8
 }
 
 func NewHSProtocolManager() *HSProtocolManager {
 	return &HSProtocolManager{
 		headerByteSize: 24,
-		version:        1,
+		ProtocolID:     1,
 	}
 }
 
@@ -36,7 +37,7 @@ func (hs *HSProtocolManager) Parsing(data []byte) (*HS, error) {
 	commandHeader := binary.BigEndian.Uint16(data[:2])
 	command := commandHeader & 0b1111111111
 	healthStatus := uint8((commandHeader >> 10) & 0b11)
-	version := uint8((commandHeader >> 12) & 0b1111)
+	ProtocolID := uint8((commandHeader >> 12) & 0b1111)
 
 	totalLength := binary.BigEndian.Uint16(data[6:8])
 
@@ -44,7 +45,7 @@ func (hs *HSProtocolManager) Parsing(data []byte) (*HS, error) {
 	copy(heap_data, data[24:])
 
 	packet := &HS{
-		Version:        version,
+		ProtocolID:     ProtocolID,
 		HealthStatus:   healthStatus,
 		Command:        command,
 		Identification: binary.BigEndian.Uint16(data[2:4]),
@@ -93,11 +94,11 @@ func (hsmgr *HSProtocolManager) ToBytes(hs *HS) ([]byte, error) {
 	buf := make([]byte, hs.TotalLength)
 
 	var commandHeader uint16
-	commandHeader |= uint16(hs.Version) << 12
+	commandHeader |= uint16(hs.ProtocolID) << 12
 	commandHeader |= uint16(hs.HealthStatus) << 10
 	commandHeader |= uint16(hs.Command)
 
-	binary.BigEndian.PutUint16(buf[0:2], commandHeader)     // Version, HealthStatus, Command
+	binary.BigEndian.PutUint16(buf[0:2], commandHeader)     // ProtocolID, HealthStatus, Command
 	binary.BigEndian.PutUint16(buf[2:4], hs.Identification) // Identification
 	binary.BigEndian.PutUint16(buf[6:8], hs.TotalLength)    // TotalLength
 	copy(buf[8:24], hs.UUID[:])                             // UUID

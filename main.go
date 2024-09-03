@@ -9,7 +9,7 @@ import (
 func main() {
 	// Example byte slice representing an HS packet
 	packetData := []byte{
-		0x41, 0x55, // Version: 4 (0100), HealthStatus: 1 (01), Command: 341 (0101010101)
+		0x41, 0x55, // ProtocolID: 4 (0100), HealthStatus: 1 (01), Command: 341 (0101010101)
 		0x12, 0x34, // Identification: 0x1234
 		0xb8, 0xa2, // Checksum: 0x4112
 		0x00, 0x1C, // TotalLength: 001C : 28
@@ -25,7 +25,7 @@ func main() {
 		log.Fatalf("Failed to parse HS packet: %v", err)
 	}
 
-	fmt.Printf("Version: %d\n", hs.Version)
+	fmt.Printf("ProtocolID: %d\n", hs.ProtocolID)
 	fmt.Printf("Health Status: %d\n", hs.HealthStatus)
 	fmt.Printf("Command: %d\n", hs.Command)
 	fmt.Printf("Identification: %d\n", hs.Identification)
@@ -40,7 +40,7 @@ func main() {
 
 	data2, err := hsManager.ToBytes(hs)
 	hs2, err := hsManager.Parsing(data2)
-	fmt.Printf("Version: %d\n", hs2.Version)
+	fmt.Printf("ProtocolID: %d\n", hs2.ProtocolID)
 	fmt.Printf("Health Status: %d\n", hs2.HealthStatus)
 	fmt.Printf("Command: %d\n", hs2.Command)
 	fmt.Printf("Identification: %d\n", hs2.Identification)
@@ -54,7 +54,7 @@ func main() {
 
 	data3, err := hsManager.ToBytes(hs2)
 	hs3, err := hsManager.Parsing(data3)
-	fmt.Printf("Version: %d\n", hs3.Version)
+	fmt.Printf("ProtocolID: %d\n", hs3.ProtocolID)
 	fmt.Printf("Health Status: %d\n", hs3.HealthStatus)
 	fmt.Printf("Command: %d\n", hs3.Command)
 	fmt.Printf("Identification: %d\n", hs3.Identification)

@@ -20,7 +20,7 @@
 
 ```go
 packetData := []byte{
-    0x41, 0x55, // Version: 4 (0100), HealthStatus: 1 (01), Command: 341 (0101010101)
+    0x41, 0x55, // ProtocolID: 4 (0100), HealthStatus: 1 (01), Command: 341 (0101010101)
     0x12, 0x34, // Identification: 0x1234
     0xb8, 0xa2, // Checksum: 0x4112
     0x00, 0x1C, // TotalLength: 001C : 28
@@ -40,7 +40,7 @@ if err != nil {
     log.Fatalf("Failed to parse HS packet: %v", err)
 }
 
-fmt.Printf("Version: %d\n", hs.Version)
+fmt.Printf("ProtocolID: %d\n", hs.ProtocolID)
 fmt.Printf("Health Status: %d\n", hs.HealthStatus)
 fmt.Printf("Command: %d\n", hs.Command)
 fmt.Printf("Identification: %d\n", hs.Identification)
@@ -53,7 +53,7 @@ fmt.Printf("Data: %x\n", hs.Data)
 **출력:**
 
 ```shell
-Version: 4
+ProtocolID: 4
 Health Status: 1
 Command: 341
 Identification: 4660
