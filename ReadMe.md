@@ -116,18 +116,18 @@ hsManager.PrintByte(data2)
 - **설명:** Identification에 대응되는 패킷을 잘 처리했음을 알림.
 
 ### Command: 1 (0b0000000001)
-- **제목:** updateProtocol
-- **설명:** Agent가 자신의 통신 프로토콜에 대한 설정 값을 Data 필드에 담아 전달합니다.
+- **제목:** updateAgentProtocol
+- **설명:** Agent가 자신의 통신 프로토콜에 대한 설정 값을 ProtocolID 필드에 담아 전달합니다.
 
- | Code   | 통신 프로토콜 | 보기       |
+| Code   | 통신 프로토콜 | 보기       |
   |--------|---------|----------|
-  | 0b0001 | TCP     |          |
-  | 0b0010 | UDP     | -------- |
- | 0b0011 | HTTP    | -------- |
- | 0b0100 | HTTPS   | -------- |
+| 0b0001 | TCP     |          |
+| 0b0010 | UDP     | -------- |
+| 0b0011 | HTTP    | -------- |
+| 0b0100 | HTTPS   | -------- |
 
 ### Command: 2 (0b0000000010)
-- **제목:** updateStatus
+- **제목:** updateAgentStatus
 - **설명:** Agent가 자신의 통신 방법을 전달합니다.
     - 0b00: stopping
     - 0b01: waiting (새로 생성)
@@ -135,7 +135,7 @@ hsManager.PrintByte(data2)
     - 0b11: remove (삭제 요청)
 
 ### Command: 3 (0b0000000011)
-- **제목:** postSystemInfo 데이터
+- **제목:** sendAgentSysInfo 데이터
 - **설명:** Agent가 컴퓨터의 정보를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
 ### Command: 4 (0b0000000100)
@@ -143,15 +143,15 @@ hsManager.PrintByte(data2)
 - **설명:** 예약
 
 ### Command: 5 (0b0000000101)
-- **제목:** postApplicationInfo 데이터
+- **제목:** sendAgentSysAppInfo 데이터
 - **설명:** Agent가 ApplicationInfo 정보를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
 ### Command: 6 (0b0000000110)
-- **제목:** getProcedure
+- **제목:** fetchInstruction
 - **설명:** Agent가 Server 측에 공격 시나리오 (YAML 파일)를 요청합니다. 이때 데이터는 Data 필드에 YAML 형태로 직렬화하여 전송됩니다.
 
 ### Command: 7 (0b0000000111)
-- **제목:** postLogOfProcedure
+- **제목:** sendProcedureLog
 - **설명:** Agent가 Server 측에 공격 시나리오 로그를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
 ---
