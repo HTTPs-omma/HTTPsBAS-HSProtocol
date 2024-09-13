@@ -26,7 +26,7 @@ const (
 	// 0b00: stopping
 	// 0b01: waiting (새로 생성)
 	// 0b10: running
-	// 0b11: remove (삭제 요청)
+	// 0b11: remove  (삭제 요청)
 
 	SEND_AGENT_SYS_INFO = 0b0000000011 // Command: 3 (0b0000000011)
 	// 제목: sendAgentSysInfo
