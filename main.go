@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/HTTPs-omma/HSProtocol/HSProtocol"
+	"github.com/HTTPs-omma/HTTPsBAS-HSProtocol/HSProtocol"
 	"log"
 )
 
