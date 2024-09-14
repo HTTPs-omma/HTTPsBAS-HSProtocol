@@ -5,7 +5,6 @@ import (
 	"fmt"
 )
 
-// Command 상수를 정의
 const (
 	ACK = 0b0000000000 // Command: 0 (0b0000000000)
 	// 제목: Ack
