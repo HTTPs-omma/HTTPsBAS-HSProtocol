@@ -2,8 +2,24 @@ package HSProtocol
 
 import (
 	"encoding/binary"
+	"encoding/hex"
 	"fmt"
 )
+
+func ByteArrayToHexString(b [16]byte) string {
+	return hex.EncodeToString(b[:])
+}
+
+// 16진수 문자열을 [16]byte로 변환
+func HexStringToByteArray(s string) ([16]byte, error) {
+	var byteArray [16]byte
+	bytes, err := hex.DecodeString(s)
+	if err != nil {
+		return byteArray, err
+	}
+	copy(byteArray[:], bytes)
+	return byteArray, nil
+}
 
 const (
 	ACK = 0b0000000000 // Command: 0 (0b0000000000)
