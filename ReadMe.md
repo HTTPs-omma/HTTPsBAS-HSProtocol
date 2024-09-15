@@ -139,8 +139,8 @@ hsManager.PrintByte(data2)
 - **설명:** Agent가 컴퓨터의 정보를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
 ### Command: 4 (0b0000000100)
-- **제목:** 예약
-- **설명:** 예약
+- **제목:** ERROR ACK
+- **설명:** Server 측에서 요청된 명령 수행에 에러 응답을 함. 
 
 ### Command: 5 (0b0000000101)
 - **제목:** sendAgentSysAppInfo 데이터

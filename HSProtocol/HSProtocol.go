@@ -31,7 +31,7 @@ const (
 	// 제목: sendAgentSysInfo
 	// 설명: Agent가 컴퓨터의 정보를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
-	RESERVED = 0b0000000100 // Command: 4 (0b0000000100)
+	ERROR_ACK = 0b0000000100 // Command: 4 (0b0000000100)
 	// 제목: 예약
 	// 설명: 예약
 
