@@ -102,12 +102,12 @@ hsManager.PrintByte(data2)
 
 ## Reference
 ### Health Status (HS) field
-| HS field | status   | 설명                |
-|----------|----------|-------------------|
-| **0b00**   | waitting | Agent가 대기중인 상태    |
-| **0b01**     | running  | Agent 가 동작중인 상태   
-| **0b10**     | stopping | Agent 가 잠시 중단된 상태 |
-| **0b11**     | deleted  | Agent 가 삭제된 상태    | 
+| HS field | status | 설명                |
+|----------|--------|-------------------|
+| **0b00**   | NEW    | Agent가 대기중인 상태    |
+| **0b01**     | RUN    | Agent 가 동작중인 상태   
+| **0b10**     | STOP   | Agent 가 잠시 중단된 상태 |
+| **0b11**     | DELETED | Agent 가 삭제된 상태    | 
 
 
 

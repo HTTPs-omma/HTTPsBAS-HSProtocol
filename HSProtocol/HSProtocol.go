@@ -22,6 +22,20 @@ func HexStringToByteArray(s string) ([16]byte, error) {
 }
 
 const (
+	NEW     = 0b00
+	WAIT    = 0b01
+	RUN     = 0b10
+	DELETED = 0b11
+)
+
+const (
+	TCP   = 0b0001
+	UDP   = 0b0010
+	HTTP  = 0b0011
+	HTTPS = 0b0100
+)
+
+const (
 	ACK = 0b0000000000 // Command: 0 (0b0000000000)
 	// 제목: Ack
 	// 설명: Identification에 대응되는 패킷을 잘 처리했음을 알림.
