@@ -134,7 +134,7 @@ hsManager.PrintByte(data2)
     - 0b10: running
     - 0b11: remove (삭제 요청)
 
-### Command: 3 (0b0000000011)
+### Command: 3 (0b0000000011) 
 - **제목:** sendAgentSysInfo 데이터
 - **설명:** Agent가 컴퓨터의 정보를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
