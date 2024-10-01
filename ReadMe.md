@@ -154,6 +154,15 @@ hsManager.PrintByte(data2)
 - **제목:** sendProcedureLog
 - **설명:** Agent가 Server 측에 공격 시나리오 로그를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
+### Command: 8 (0b0000001000)
+- **제목:** getApplication
+- **설명:** Server 가 Agent 측에 Application 데이터를 JSON 형태로 Data 필드에 직렬화하여 전송을 요청합니다.
+
+### Command: 9 (0b0000001001)
+- **제목:** getSystemInfo
+- **설명:** Server 가 Agent 측에 SystemInfo 데이터를 JSON 형태로 Data 필드에 직렬화하여 전송을 요청합니다.
+
+
 ---
 
 ## 잡생각

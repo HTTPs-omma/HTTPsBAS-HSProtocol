@@ -29,10 +29,11 @@ const (
 )
 
 const (
-	TCP   = 0b0001
-	UDP   = 0b0010
-	HTTP  = 0b0011
-	HTTPS = 0b0100
+	UNKNOWN = 0b0000
+	TCP     = 0b0001
+	UDP     = 0b0010
+	HTTP    = 0b0011
+	HTTPS   = 0b0100
 )
 
 const (
