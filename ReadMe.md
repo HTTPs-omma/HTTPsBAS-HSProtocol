@@ -154,22 +154,6 @@ hsManager.PrintByte(data2)
 - **제목:** sendProcedureLog
 - **설명:** Agent가 Server 측에 공격 시나리오 로그를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
 
-### Command: 8 (0b0000001000)
-- **제목:** getApplication
-- **설명:** Server 가 Agent 측에 Application 데이터를 JSON 형태로 Data 필드에 직렬화하여 전송을 요청합니다.
-
-### Command: 9 (0b0000001001)
-- **제목:** getSystemInfo
-- **설명:** Server 가 Agent 측에 SystemInfo 데이터를 JSON 형태로 Data 필드에 직렬화하여 전송을 요청합니다.
-
-### Command: 10 (0b0000001010)
-- **제목:** executePayLoad
-- **설명:** Server 가 Agent 측에 공격 시나리오를 Yaml 형태로 Data 필드에 직렬화하여 전달합니다. Agent 는 시라리오의 Command 필드를 수행합니다.
-
-### Command: 11 (0b0000001011)
-- **제목:** executeCleanUp
-- **설명:** Server 가 Agent 측에 공격 시나리오를 Yaml 형태로 Data 필드에 직렬화하여 전달합니다. Agent 는 시라리오의 cleanup 필드를 수행합니다.
-
 ---
 
 ## 잡생각

@@ -77,10 +77,6 @@ const (
 	SEND_PROCEDURE_LOG = 0b0000000111 // Command: 7 (0b0000000111)
 	// 제목: sendProcedureLog
 	// 설명: Agent가 Server 측에 공격 시나리오 로그를 JSON 형태로 Data 필드에 직렬화하여 전송합니다.
-	GET_APPLICATION = 0b0000001000
-	GET_SYSTEMINFO  = 0b0000001001
-	EXECUTE_PAYLOAD = 0b0000001010
-	EXECUTE_CLEANUP = 0b0000001011
 )
 
 // Command 상수를 정의
