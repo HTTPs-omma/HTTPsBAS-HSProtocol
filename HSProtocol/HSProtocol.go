@@ -108,7 +108,7 @@ func NewHSProtocolManager() *HSProtocolManager {
 }
 
 func (hs *HSProtocolManager) Parsing(data []byte) (*HS, error) {
-	if len(data) < 20 {
+	if len(data) < 24 {
 		return nil, fmt.Errorf("Not enough data to parse the HS protocol")
 	}
 
