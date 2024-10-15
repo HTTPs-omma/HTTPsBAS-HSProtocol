@@ -92,8 +92,8 @@ const (
 // Command 상수를 정의
 type HS struct {
 	ProtocolID     uint8
-	HealthStatus   uint8
-	Command        uint16
+	HealthStatus   AGENTSTATUS
+	Command        COMMANDTYPE
 	Identification uint16
 	Checksum       uint16
 	TotalLength    uint16
