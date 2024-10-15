@@ -91,7 +91,7 @@ const (
 
 // Command 상수를 정의
 type HS struct {
-	ProtocolID     uint8
+	ProtocolID     PROTOCOL
 	HealthStatus   AGENTSTATUS
 	Command        COMMANDTYPE
 	Identification uint16
@@ -119,9 +119,9 @@ func (hs *HSProtocolManager) Parsing(data []byte) (*HS, error) {
 	}
 
 	commandHeader := binary.BigEndian.Uint16(data[:2])
-	command := commandHeader & 0b1111111111
-	healthStatus := uint8((commandHeader >> 10) & 0b11)
-	ProtocolID := uint8((commandHeader >> 12) & 0b1111)
+	command := COMMANDTYPE(commandHeader & 0b1111111111)
+	healthStatus := AGENTSTATUS((commandHeader >> 10) & 0b11)
+	ProtocolID := PROTOCOL((commandHeader >> 12) & 0b1111)
 
 	totalLength := binary.BigEndian.Uint16(data[6:8])
 
