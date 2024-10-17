@@ -125,6 +125,7 @@ hsManager.PrintByte(data2)
 | 0b0010 | UDP     | -------- |
 | 0b0011 | HTTP    | -------- |
 | 0b0100 | HTTPS   | -------- |
+| 0b0101 | DNS     | -------- |
 
 ### Command: 2 (0b0000000010)
 - **제목:** updateAgentStatus
