@@ -124,7 +124,7 @@ func (hs *HSProtocolManager) Parsing(data []byte) (*HS, error) {
 	healthStatus := AGENTSTATUS((commandHeader >> 10) & 0b11)
 	ProtocolID := PROTOCOL((commandHeader >> 12) & 0b1111)
 
-	totalLength := binary.BigEndian.Uint16(data[6:8])
+	totalLength := binary.BigEndian.Uint16(data[6:12])
 
 	heap_data := make([]byte, int(totalLength)-hs.headerByteSize)
 	copy(heap_data, data[24:])
@@ -139,7 +139,7 @@ func (hs *HSProtocolManager) Parsing(data []byte) (*HS, error) {
 		Data:           heap_data,
 	}
 
-	copy(packet.UUID[:], data[8:24])
+	copy(packet.UUID[:], data[12:28])
 
 	return packet, nil
 }
@@ -185,8 +185,8 @@ func (hsmgr *HSProtocolManager) ToBytes(hs *HS) ([]byte, error) {
 
 	binary.BigEndian.PutUint16(buf[0:2], commandHeader)     // ProtocolID, HealthStatus, Command
 	binary.BigEndian.PutUint16(buf[2:4], hs.Identification) // Identification
-	binary.BigEndian.PutUint16(buf[6:8], hs.TotalLength)    // TotalLength
-	copy(buf[8:24], hs.UUID[:])                             // UUID
+	binary.BigEndian.PutUint16(buf[6:12], hs.TotalLength)   // TotalLength
+	copy(buf[12:28], hs.UUID[:])                            // UUID
 	copy(buf[24:], hs.Data)                                 // Data
 	copy(buf[4:6], hsmgr.GetCheckSum(buf))                  // Checksum 계산
 
