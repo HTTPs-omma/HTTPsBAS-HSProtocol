@@ -191,7 +191,7 @@ func (hsmgr *HSProtocolManager) ToBytes(hs *HS) ([]byte, error) {
 	copy(buf[4:6], hsmgr.GetCheckSum(buf))                  // Checksum 계산
 
 	return buf, nil
-}
+} //
 
 func (hs *HSProtocolManager) PrintByte(data []byte) {
 	for i := 0; i < len(data); i++ {
