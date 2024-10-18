@@ -109,13 +109,13 @@ type HSProtocolManager struct {
 
 func NewHSProtocolManager() *HSProtocolManager {
 	return &HSProtocolManager{
-		headerByteSize: 24,
+		headerByteSize: 28,
 		ProtocolID:     1,
 	}
 }
 
 func (hs *HSProtocolManager) Parsing(data []byte) (*HS, error) {
-	if len(data) < 24 {
+	if len(data) < 28 {
 		return nil, fmt.Errorf("Not enough data to parse the HS protocol")
 	}
 
@@ -127,7 +127,7 @@ func (hs *HSProtocolManager) Parsing(data []byte) (*HS, error) {
 	totalLength := binary.BigEndian.Uint16(data[6:12])
 
 	heap_data := make([]byte, int(totalLength)-hs.headerByteSize)
-	copy(heap_data, data[24:])
+	copy(heap_data, data[28:])
 
 	packet := &HS{
 		ProtocolID:     ProtocolID,
@@ -187,7 +187,7 @@ func (hsmgr *HSProtocolManager) ToBytes(hs *HS) ([]byte, error) {
 	binary.BigEndian.PutUint16(buf[2:4], hs.Identification) // Identification
 	binary.BigEndian.PutUint16(buf[6:12], hs.TotalLength)   // TotalLength
 	copy(buf[12:28], hs.UUID[:])                            // UUID
-	copy(buf[24:], hs.Data)                                 // Data
+	copy(buf[28:], hs.Data)                                 // Data
 	copy(buf[4:6], hsmgr.GetCheckSum(buf))                  // Checksum 계산
 
 	return buf, nil
