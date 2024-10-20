@@ -125,6 +125,9 @@ func (hs *HSProtocolManager) Parsing(data []byte) (*HS, error) {
 	ProtocolID := PROTOCOL((commandHeader >> 12) & 0b1111)
 
 	totalLength := binary.BigEndian.Uint16(data[6:12])
+	if int(totalLength)-hs.headerByteSize < 0 {
+		return nil, fmt.Errorf("Not enough data to parse the HS protocol")
+	}
 
 	heap_data := make([]byte, int(totalLength)-hs.headerByteSize)
 	copy(heap_data, data[28:])
